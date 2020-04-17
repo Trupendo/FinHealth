@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "408260299007",
+    "firebase_url": "https://finhealth-9lopers.firebaseio.com",
+    "project_id": "finhealth-9lopers",
+    "storage_bucket": "finhealth-9lopers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408260299007:android:531cdcab82ea3f8211e4ca",
+        "android_client_info": {
+          "package_name": "devetlopers.finhealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408260299007-ah40fnks1h8knalk91qjlsng5btd7jdm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrnvOnyjKtx4pJcdQUldQ4kG14Xx8JwMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408260299007-ah40fnks1h8knalk91qjlsng5btd7jdm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
