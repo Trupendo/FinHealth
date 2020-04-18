@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         Button signUpButton = view.findViewById(R.id.signUpButton);
         Button signInButton = view.findViewById(R.id.signInButton);
-        Button signOutButton = view.findViewById(R.id.signOutButton);
+//        Button signOutButton = view.findViewById(R.id.signOutButton);
         TextView emailField = view.findViewById(R.id.emailField);
         TextView passwordField = view.findViewById(R.id.passwordField);
 
@@ -87,10 +87,10 @@ public class LoginFragment extends Fragment {
         });
 
         auth.signOut();
-        signOutButton.setOnClickListener(view1 -> {
-            auth.signOut();
-            Toast.makeText(getContext(), "ODHLASENE", Toast.LENGTH_SHORT).show();
-        });
+//        signOutButton.setOnClickListener(view1 -> {
+//            auth.signOut();
+//            Toast.makeText(getContext(), "ODHLASENE", Toast.LENGTH_SHORT).show();
+//        });
     }
 
 
