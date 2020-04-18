@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">FinHealth</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="heslo">Heslo</string>
+    <string name="welcome_text">Vitajte v aplikácii FinHealth</string>
+    <string name="sign_out">Odhlásiť sa</string>
+    <string name="sign_up">Zaregistrovať sa</string>
+    <string name="sign_in">Prihlásiť sa</string>
+    <string name="continue_text">Aby ste mohli pokračovať, prihláste sa</string>
+    <string name="meno">Meno</string>
+    <string name="registrationn">Registrácia</string>
+    <string name="priezvisko">Priezvisko</string>
 </resources>

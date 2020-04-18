@@ -57,19 +57,7 @@ public class LoginFragment extends Fragment {
 
 
         signUpButton.setOnClickListener(view1 -> {
-            auth.createUserWithEmailAndPassword("matej@kandrac.com", "cisco123").addOnCompleteListener(runnable -> {
-                if (runnable.isSuccessful()) {
-                    Toast.makeText(getContext(), "ZAREGISTROVANE", Toast.LENGTH_SHORT).show();
-                    HashMap<String, Object> data = new HashMap<>();
-                    data.put("name", "Matej");
-                    data.put("surname", "Kandrac");
-                    firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
-                        Toast.makeText(getContext(), "ULOZENE", Toast.LENGTH_SHORT).show();
-                    });
-                } else {
-                    Toast.makeText(getContext(), "NEDA SA REGISTROVAT", Toast.LENGTH_SHORT).show();
-                }
-            });
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registrationFragment);
         });
 
         signInButton.setOnClickListener(view1 -> {
@@ -98,10 +86,12 @@ public class LoginFragment extends Fragment {
             });
         });
 
+        auth.signOut();
         signOutButton.setOnClickListener(view1 -> {
             auth.signOut();
             Toast.makeText(getContext(), "ODHLASENE", Toast.LENGTH_SHORT).show();
         });
     }
+
 
 }
