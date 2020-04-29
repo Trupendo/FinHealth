@@ -67,6 +67,7 @@ public class RegistrationFragment extends Fragment {
                     HashMap<String, Object> data = new HashMap<>();
                     data.put("name", name);
                     data.put("surname", surname);
+                    data.put("zostatok", 0);
                     firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                         Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                     });
