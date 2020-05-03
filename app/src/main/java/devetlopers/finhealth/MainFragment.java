@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -50,6 +51,7 @@ public class MainFragment extends Fragment {
         TextView docasneMeno = view.findViewById(R.id.docasne);
         TextView docasnyZostatok = view.findViewById(R.id.docasne2);
         Button buttonPlus = view.findViewById(R.id.button);
+        FloatingActionButton addMoneyButton = view.findViewById(R.id.btnAddMoney);
 
         docasneMeno.setText(user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
         docasnyZostatok.setText("Zostatok: " + user.getLoggedUser().getZostatok());
@@ -62,6 +64,10 @@ public class MainFragment extends Fragment {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
             });
             docasnyZostatok.setText("Zostatok: " + user.getLoggedUser().getZostatok());
+        });
+
+        addMoneyButton.setOnClickListener(view1 -> {
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_addMoneyFragment);
         });
     }
 }
