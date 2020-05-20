@@ -10,4 +10,7 @@
     <string name="meno">Meno</string>
     <string name="registrationn">Registrácia</string>
     <string name="priezvisko">Priezvisko</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

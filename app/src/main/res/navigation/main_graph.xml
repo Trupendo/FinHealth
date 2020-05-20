@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_planCreateFragment"
+            app:destination="@id/planCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -39,4 +42,9 @@
         android:name="devetlopers.finhealth.AddMoneyFragment"
         android:label="fragment_add_money"
         tools:layout="@layout/fragment_add_money" />
+    <fragment
+        android:id="@+id/planCreateFragment"
+        android:name="devetlopers.finhealth.PlanCreateFragment"
+        android:label="fragment_plan_create"
+        tools:layout="@layout/fragment_plan_create" />
 </navigation>

@@ -4,7 +4,7 @@ public class User {
 
     private String name;
     private String surname;
-    private int zostatok;
+    private double zostatok;
 
     public User() {
     }
@@ -17,11 +17,11 @@ public class User {
         return surname;
     }
 
-    public int getZostatok() {
+    public double getZostatok() {
         return zostatok;
     }
 
-    public void setZostatok(int zostatok) {
+    public void setZostatok(double zostatok) {
         this.zostatok = zostatok;
     }
 }
