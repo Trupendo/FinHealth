@@ -144,4 +144,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox10" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="116dp"
+        android:layout_height="36dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="485dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

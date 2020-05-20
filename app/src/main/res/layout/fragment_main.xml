@@ -66,7 +66,7 @@
                 android:id="@+id/goal1Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cieľ 1"
+                android:text="Železná rezerva"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="21sp" />
 
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="25/100€"
+                android:text="0/3000€"
                 android:textAlignment="textEnd"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp" />
