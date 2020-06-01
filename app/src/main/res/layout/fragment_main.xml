@@ -71,7 +71,7 @@
                 android:textSize="21sp" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/stav1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -145,7 +145,7 @@
                 android:textSize="21sp" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/stav2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -217,7 +217,7 @@
                 android:textSize="21sp" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/stav3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

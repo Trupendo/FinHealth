@@ -46,5 +46,9 @@
         android:id="@+id/planCreateFragment"
         android:name="devetlopers.finhealth.PlanCreateFragment"
         android:label="fragment_plan_create"
-        tools:layout="@layout/fragment_plan_create" />
+        tools:layout="@layout/fragment_plan_create" >
+        <action
+            android:id="@+id/action_planCreateFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

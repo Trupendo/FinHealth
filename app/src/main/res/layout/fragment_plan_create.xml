@@ -20,28 +20,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        android:text="Bla bla bla dlhaaa otaaazka tu bude na zaklade ktorej sa to urci more"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <CheckBox
         android:id="@+id/checkBox8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="29dp"
         android:layout_marginEnd="16dp"
         android:text="Bla bla bla dlhaaa otaaazka tu bude na zaklade ktorej sa to urci more"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <CheckBox
         android:id="@+id/checkBox9"
@@ -82,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/checkBox10" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/createPlanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -98,12 +86,12 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="16dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <View
         android:id="@+id/divider2"
@@ -145,12 +133,28 @@
         app:layout_constraintTop_toBottomOf="@+id/checkBox10" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="116dp"
-        android:layout_height="36dp"
+        android:id="@+id/rezervaAnount"
+        android:layout_width="154dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
+        android:hint="v €"
         android:inputType="numberDecimal"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="485dp" />
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="226dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
+        android:text="Kolko chces odlozit do zeleznej rezervy?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

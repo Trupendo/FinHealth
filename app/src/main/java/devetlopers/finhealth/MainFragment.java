@@ -42,14 +42,16 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //NERIES DALSI RIADOK
-        getArguments().getString("Name");
 
         SingletonUser user = SingletonUser.getInstance();
 
         FloatingActionButton toAddMoneyScreenButton = view.findViewById(R.id.btnToAddMoneyScreen);
         TextView zostatokValue = view.findViewById(R.id.zostatokValue);
         TextView dashoard = view.findViewById(R.id.dashboard);
+        TextView stav1 = view.findViewById(R.id.stav1);
+        TextView stav2 = view.findViewById(R.id.stav2);
+        TextView stav3 = view.findViewById(R.id.stav3);
+
         LinearLayout goal1 = view.findViewById(R.id.goal1);
         goal1.setOnClickListener(view1 -> {
             Toast.makeText(getContext(), "gg", Toast.LENGTH_SHORT).show();
@@ -58,6 +60,8 @@ public class MainFragment extends Fragment {
 
         dashoard.append(" - "+user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
         zostatokValue.setText(user.getLoggedUser().getZostatok()+"€");
+
+        stav1.setText(user.getLoggedUser().getZostatok()+"/"+user.getLoggedUser().getRezervaPlan()+"€");
 
         toAddMoneyScreenButton.setOnClickListener(view1 -> {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_addMoneyFragment);
