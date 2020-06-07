@@ -6,6 +6,8 @@ public class User {
     private String surname;
     private double zostatok;
     private double rezervaPlan;
+    private double rezervaPercent;
+    //TODO add second plan
     private double customPlan;
     private boolean planCreated = false;
 
@@ -50,5 +52,13 @@ public class User {
 
     public void setPlanCreated(boolean planCreated) {
         this.planCreated = planCreated;
+    }
+
+    public double getRezervaPercent() {
+        return rezervaPercent;
+    }
+
+    public void setRezervaPercent(double rezervaPercent) {
+        this.rezervaPercent = rezervaPercent;
     }
 }

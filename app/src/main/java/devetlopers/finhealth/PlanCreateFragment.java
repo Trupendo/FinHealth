@@ -47,6 +47,7 @@ public class PlanCreateFragment extends Fragment {
         SingletonUser user = SingletonUser.getInstance();
 
         EditText rezervaAmount = view.findViewById(R.id.rezervaAnount);
+        EditText rezervaPercent = view.findViewById(R.id.rezervaPercent);
         Button confirmButton = view.findViewById(R.id.createPlanBtn);
 
         if (user.getLoggedUser().isPlanCreated()) {
@@ -54,14 +55,17 @@ public class PlanCreateFragment extends Fragment {
         }
 
         confirmButton.setOnClickListener(v -> {
-            double rezerva = Double.parseDouble(String.valueOf(rezervaAmount.getText()));
+            double rezervaPlan = Double.parseDouble(String.valueOf(rezervaAmount.getText()));
+            double rezervaPercentValue = Double.parseDouble(String.valueOf(rezervaPercent.getText()));
             HashMap<String, Object> data = new HashMap<>();
-            data.put("rezervaPlan", rezerva);
+            data.put("rezervaPlan", rezervaPlan);
+            data.put("rezervaPercent", rezervaPercentValue);
             data.put("planCreated", true);
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                 user.getLoggedUser().setPlanCreated(true);
-                user.getLoggedUser().setRezervaPlan(rezerva);
+                user.getLoggedUser().setRezervaPlan(rezervaPlan);
+                user.getLoggedUser().setRezervaPercent(rezervaPercentValue);
                 Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_mainFragment);
             });
         });

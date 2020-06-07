@@ -58,13 +58,21 @@ public class MainFragment extends Fragment {
         });
 
 
-        dashoard.append(" - "+user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
-        zostatokValue.setText(user.getLoggedUser().getZostatok()+"€");
+        double stav1zatial = user.getLoggedUser().getZostatok()*(user.getLoggedUser().getRezervaPercent()/100);
+        double zostatokZatial = user.getLoggedUser().getZostatok()-stav1zatial;
 
-        stav1.setText(user.getLoggedUser().getZostatok()+"/"+user.getLoggedUser().getRezervaPlan()+"€");
+        dashoard.append(" - "+user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
+
+        zostatokValue.setText(format(zostatokZatial)+"€");
+
+        stav1.setText(format(stav1zatial)+"/"+user.getLoggedUser().getRezervaPlan()+"€");
 
         toAddMoneyScreenButton.setOnClickListener(view1 -> {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_addMoneyFragment);
         });
+    }
+
+    public String format(double hodnota) {
+        return String.format("%.2f", hodnota);
     }
 }
