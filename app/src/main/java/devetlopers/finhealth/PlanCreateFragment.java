@@ -61,6 +61,7 @@ public class PlanCreateFragment extends Fragment {
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                 user.getLoggedUser().setPlanCreated(true);
+                user.getLoggedUser().setRezervaPlan(rezerva);
                 Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_mainFragment);
             });
         });
