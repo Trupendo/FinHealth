@@ -70,7 +70,7 @@ public class RegistrationFragment extends Fragment {
                     data.put("zostatok", 0);
                     data.put("planCreated", false);
                     firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
-                        Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                     });
                 } else {
                     Toast.makeText(getContext(), "Nepodarilo sa registrovať", Toast.LENGTH_SHORT).show();

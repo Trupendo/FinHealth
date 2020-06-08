@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 
@@ -51,14 +54,21 @@ public class MainFragment extends Fragment {
         TextView stav1 = view.findViewById(R.id.stav1);
         TextView stav2 = view.findViewById(R.id.stav2);
         TextView stav3 = view.findViewById(R.id.stav3);
+        TextView percent1 = view.findViewById(R.id.percent1);
+        TextView percent2 = view.findViewById(R.id.percent2);
+        TextView percent3 = view.findViewById(R.id.percent3);
+        ProgressBar progressBar1 = view.findViewById(R.id.progressBar1);
+        ProgressBar progressBar2 = view.findViewById(R.id.progressBar2);
+        ProgressBar progressBar3 = view.findViewById(R.id.progressBar3);
 
         LinearLayout goal1 = view.findViewById(R.id.goal1);
         goal1.setOnClickListener(view1 -> {
-            Toast.makeText(getContext(), "gg", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "gg", Toast.LENGTH_SHORT).show();
         });
 
 
         double stav1zatial = user.getLoggedUser().getZostatok()*(user.getLoggedUser().getRezervaPercent()/100);
+        double percent1value = stav1zatial/user.getLoggedUser().getRezervaPlan()*100;
         double zostatokZatial = user.getLoggedUser().getZostatok()-stav1zatial;
 
         dashoard.append(" - "+user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
@@ -66,6 +76,10 @@ public class MainFragment extends Fragment {
         zostatokValue.setText(format(zostatokZatial)+"€");
 
         stav1.setText(format(stav1zatial)+"/"+user.getLoggedUser().getRezervaPlan()+"€");
+        percent1.setText(format(percent1value)+"%");
+        progressBar1.post(() -> {
+            progressBar1.setProgress((int) percent1value);
+        });
 
         toAddMoneyScreenButton.setOnClickListener(view1 -> {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_addMoneyFragment);
