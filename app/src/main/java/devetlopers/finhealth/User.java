@@ -7,8 +7,10 @@ public class User {
     private double zostatok;
     private double rezervaPlan;
     private double rezervaPercent;
-    //TODO add second plan
+    private double majetokPlan;
+    private double majetokPercent;
     private double customPlan;
+    private double customPercent;
     private boolean planCreated = false;
 
     public User() {
@@ -60,5 +62,21 @@ public class User {
 
     public void setRezervaPercent(double rezervaPercent) {
         this.rezervaPercent = rezervaPercent;
+    }
+
+    public double getMajetokPlan() {
+        return majetokPlan;
+    }
+
+    public void setMajetokPlan(double majetokPlan) {
+        this.majetokPlan = majetokPlan;
+    }
+
+    public double getMajetokPercent() {
+        return majetokPercent;
+    }
+
+    public void setMajetokPercent(double majetokPercent) {
+        this.majetokPercent = majetokPercent;
     }
 }
