@@ -36,7 +36,11 @@
         android:id="@+id/registrationFragment"
         android:name="devetlopers.finhealth.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_planCreateFragment"
+            app:destination="@id/planCreateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addMoneyFragment"
         android:name="devetlopers.finhealth.AddMoneyFragment"

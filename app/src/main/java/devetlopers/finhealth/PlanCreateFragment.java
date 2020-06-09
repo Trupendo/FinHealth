@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -46,8 +45,8 @@ public class PlanCreateFragment extends Fragment {
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         SingletonUser user = SingletonUser.getInstance();
 
-        EditText rezervaAmount = view.findViewById(R.id.rezervaAnount);
-        EditText rezervaPercent = view.findViewById(R.id.rezervaPercent);
+        EditText pMesPrijem = view.findViewById(R.id.pMesPrijem);
+        EditText pMesVydavky = view.findViewById(R.id.pMesVydavky);
         Button confirmButton = view.findViewById(R.id.createPlanBtn);
 
         if (user.getLoggedUser().isPlanCreated()) {
@@ -55,17 +54,17 @@ public class PlanCreateFragment extends Fragment {
         }
 
         confirmButton.setOnClickListener(v -> {
-            double rezervaPlan = Double.parseDouble(String.valueOf(rezervaAmount.getText()));
-            double rezervaPercentValue = Double.parseDouble(String.valueOf(rezervaPercent.getText()));
+            double rezervaPlan = Double.parseDouble(String.valueOf(pMesVydavky.getText()))*3;
+            double budMajetkuPlan = Double.parseDouble(String.valueOf(pMesPrijem.getText()))*0.1;
             HashMap<String, Object> data = new HashMap<>();
             data.put("rezervaPlan", rezervaPlan);
-            data.put("rezervaPercent", rezervaPercentValue);
+            data.put("rezervaPercent", budMajetkuPlan);
             data.put("planCreated", true);
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                 user.getLoggedUser().setPlanCreated(true);
                 user.getLoggedUser().setRezervaPlan(rezervaPlan);
-                user.getLoggedUser().setRezervaPercent(rezervaPercentValue);
+                user.getLoggedUser().setRezervaPercent(budMajetkuPlan);
                 Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_mainFragment);
             });
         });
