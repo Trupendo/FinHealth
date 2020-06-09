@@ -51,4 +51,9 @@
             android:id="@+id/action_planCreateFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/sumarizationFragment"
+        android:name="devetlopers.finhealth.SumarizationFragment"
+        android:label="fragment_sumarization"
+        tools:layout="@layout/fragment_sumarization" />
 </navigation>

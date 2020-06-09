@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -46,17 +45,17 @@ public class PlanCreateFragment extends Fragment {
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         SingletonUser user = SingletonUser.getInstance();
 
-        EditText rezervaAmount = view.findViewById(R.id.rezervaAnount);
-        EditText rezervaPercent = view.findViewById(R.id.rezervaPercent);
+        EditText vydavkyAmount = view.findViewById(R.id.vydavkyAmount);
+        EditText prijemAmount = view.findViewById(R.id.prijemAmount);
         Button confirmButton = view.findViewById(R.id.createPlanBtn);
 
-        if (user.getLoggedUser().isPlanCreated()) {
-            Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_mainFragment);
-        }
+//        if (user.getLoggedUser().isPlanCreated()) {
+//            Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_mainFragment);
+//        }
 
         confirmButton.setOnClickListener(v -> {
-            double rezervaPlan = Double.parseDouble(String.valueOf(rezervaAmount.getText()));
-            double rezervaPercentValue = Double.parseDouble(String.valueOf(rezervaPercent.getText()));
+            double rezervaPlan = Double.parseDouble(String.valueOf(vydavkyAmount.getText()));
+            double rezervaPercentValue = Double.parseDouble(String.valueOf(prijemAmount.getText()));
             HashMap<String, Object> data = new HashMap<>();
             data.put("rezervaPlan", rezervaPlan);
             data.put("rezervaPercent", rezervaPercentValue);

@@ -66,21 +66,43 @@ public class MainFragment extends Fragment {
             Toast.makeText(requireContext(), "gg", Toast.LENGTH_SHORT).show();
         });
 
-
-        double stav1zatial = user.getLoggedUser().getZostatok()*(user.getLoggedUser().getRezervaPercent()/100);
-        double percent1value = stav1zatial/user.getLoggedUser().getRezervaPlan()*100;
-        double zostatokZatial = user.getLoggedUser().getZostatok()-stav1zatial;
-
         dashoard.append(" - "+user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
 
+        //variables for display
+        double stav1zatial = user.getLoggedUser().getZostatok()*(user.getLoggedUser().getRezervaPercent()/100);
+        double percent1value = stav1zatial/user.getLoggedUser().getRezervaPlan()*100;
+        double stav2zatial = 0;
+        double percent2value = 0;
+        double stav3zatial = 0;
+        double percent3value = 0;
+
+        double zostatokZatial = user.getLoggedUser().getZostatok()-stav1zatial;
+
+        //showing data
         zostatokValue.setText(format(zostatokZatial)+"€");
 
         stav1.setText(format(stav1zatial)+"/"+user.getLoggedUser().getRezervaPlan()+"€");
         percent1.setText(format(percent1value)+"%");
+
+        stav2.setText(stav2zatial+"€");
+        percent2.setText(percent2value+"%");
+
+        stav3.setText(stav3zatial+"€");
+        percent2.setText(percent3value+"%");
+
+        //progressbars
         progressBar1.post(() -> {
             progressBar1.setProgress((int) percent1value);
         });
+        progressBar2.post(() -> {
+            progressBar2.setProgress((int) percent2value);
+        });
+        progressBar3.post(() -> {
+            progressBar3.setProgress((int) percent3value);
+        });
 
+
+        //add money button
         toAddMoneyScreenButton.setOnClickListener(view1 -> {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_addMoneyFragment);
         });
