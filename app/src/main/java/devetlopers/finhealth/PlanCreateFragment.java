@@ -54,7 +54,7 @@ public class PlanCreateFragment extends Fragment {
         Button confirmButton = view.findViewById(R.id.createPlanBtn);
 
         if (user.getLoggedUser().isPlanCreated()) {
-            Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_mainFragment);
+            Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_sumarizationFragment);
         }
 
         confirmButton.setOnClickListener(v -> {
@@ -79,7 +79,7 @@ public class PlanCreateFragment extends Fragment {
                 user.getLoggedUser().setPlanCreated(true);
                 user.getLoggedUser().setRezervaPlan(rezervaPlan);
                 user.getLoggedUser().setRezervaPercent(budMajetkuPlan);
-                Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_mainFragment);
+                Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_sumarizationFragment);
             });
         });
     }
