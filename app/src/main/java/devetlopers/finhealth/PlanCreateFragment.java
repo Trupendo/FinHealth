@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -45,8 +46,11 @@ public class PlanCreateFragment extends Fragment {
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         SingletonUser user = SingletonUser.getInstance();
 
-        EditText pMesPrijem = view.findViewById(R.id.pMesPrijem);
-        EditText pMesVydavky = view.findViewById(R.id.pMesVydavky);
+        EditText pMesPrijem0 = view.findViewById(R.id.pMesPrijem);
+        EditText pMesVydavky0 = view.findViewById(R.id.pMesVydavky);
+        CheckBox rizPovolanie0 = view.findViewById(R.id.checkBox1);
+        CheckBox TPP0 = view.findViewById(R.id.checkBox2);
+        CheckBox rodina0 = view.findViewById(R.id.checkBox3);
         Button confirmButton = view.findViewById(R.id.createPlanBtn);
 
         if (user.getLoggedUser().isPlanCreated()) {
@@ -54,11 +58,21 @@ public class PlanCreateFragment extends Fragment {
         }
 
         confirmButton.setOnClickListener(v -> {
-            double rezervaPlan = Double.parseDouble(String.valueOf(pMesVydavky.getText()))*3;
-            double budMajetkuPlan = Double.parseDouble(String.valueOf(pMesPrijem.getText()))*0.1;
+            double pMesVydavky = Double.parseDouble(String.valueOf(pMesVydavky0.getText()));
+            double pMesPrijem = Double.parseDouble(String.valueOf(pMesPrijem0.getText()));
+            boolean rizPovolanie = rizPovolanie0.isChecked();
+            boolean TPP = TPP0.isChecked();
+            boolean rodina = rodina0.isChecked();
+            double rezervaPlan;
+            double budMajetkuPlan;
+            if (rizPovolanie == false && TPP == true && rodina == false) {
+                rezervaPlan = 3*pMesVydavky;
+            }
+            else rezervaPlan = 6*pMesVydavky;
+            budMajetkuPlan = 0.1*pMesPrijem;
             HashMap<String, Object> data = new HashMap<>();
             data.put("rezervaPlan", rezervaPlan);
-            data.put("rezervaPercent", budMajetkuPlan);
+            data.put("budMajetkuPlan", budMajetkuPlan);
             data.put("planCreated", true);
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
