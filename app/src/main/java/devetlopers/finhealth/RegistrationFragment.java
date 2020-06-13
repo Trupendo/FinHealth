@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +73,21 @@ public class RegistrationFragment extends Fragment {
                     firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                         Toast.makeText(requireContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                     });
+                    firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).get().addOnCompleteListener(runnable1 -> {
+                        if (runnable1.isSuccessful()) {
+                            User user = runnable1.getResult().toObject(User.class);
+                            SingletonUser user1 = SingletonUser.getInstance();
+                            user1.setLoggedUser(user);
+                            if (!user1.getLoggedUser().isPlanCreated()) {
+                                Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_planCreateFragment);
+                            } else {
+                                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
+                            }
+                        } else
+                            Toast.makeText(getContext(), "Could not fetch data", Toast.LENGTH_SHORT).show();
+                    });
                 } else {
+                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getContext(), "Nepodarilo sa registrovať", Toast.LENGTH_SHORT).show();
                 }
             });

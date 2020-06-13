@@ -28,15 +28,16 @@
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_planCreateFragment"
-            app:destination="@id/planCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="devetlopers.finhealth.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_planCreateFragment"
+            app:destination="@id/planCreateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addMoneyFragment"
         android:name="devetlopers.finhealth.AddMoneyFragment"
@@ -48,12 +49,16 @@
         android:label="fragment_plan_create"
         tools:layout="@layout/fragment_plan_create" >
         <action
-            android:id="@+id/action_planCreateFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_planCreateFragment_to_sumarizationFragment"
+            app:destination="@id/sumarizationFragment" />
     </fragment>
     <fragment
         android:id="@+id/sumarizationFragment"
         android:name="devetlopers.finhealth.SumarizationFragment"
         android:label="fragment_sumarization"
-        tools:layout="@layout/fragment_sumarization" />
+        tools:layout="@layout/fragment_sumarization" >
+        <action
+            android:id="@+id/action_sumarizationFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

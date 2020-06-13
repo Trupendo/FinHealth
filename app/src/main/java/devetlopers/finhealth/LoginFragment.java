@@ -76,7 +76,7 @@ public class LoginFragment extends Fragment {
                             SingletonUser user1 = SingletonUser.getInstance();
                             user1.setLoggedUser(user);
                             if (!user1.getLoggedUser().isPlanCreated()) {
-                                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_planCreateFragment);
+                                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
                             } else {
                                 Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
                             }
