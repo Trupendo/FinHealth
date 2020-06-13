@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_addMoneyFragment"
             app:destination="@id/addMoneyFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_sendMoneyFragment"
+            app:destination="@id/sendMoneyFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -61,4 +64,9 @@
             android:id="@+id/action_sumarizationFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/sendMoneyFragment"
+        android:name="devetlopers.finhealth.SendMoneyFragment"
+        android:label="fragment_send_money"
+        tools:layout="@layout/fragment_send_money" />
 </navigation>

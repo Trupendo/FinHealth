@@ -62,9 +62,8 @@ public class MainFragment extends Fragment {
         ProgressBar progressBar3 = view.findViewById(R.id.progressBar3);
 
         LinearLayout goal1 = view.findViewById(R.id.goal1);
-        goal1.setOnClickListener(view1 -> {
-            Toast.makeText(requireContext(), "gg", Toast.LENGTH_SHORT).show();
-        });
+        LinearLayout goal2 = view.findViewById(R.id.goal2);
+        LinearLayout goal3 = view.findViewById(R.id.goal3);
 
         dashoard.append(" - "+user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
 
@@ -72,16 +71,34 @@ public class MainFragment extends Fragment {
 
         zostatokValue.setText(format(zostatok)+"€");
 
-        stav1.setText("0/"+user.getLoggedUser().getRezerva()+"€");
+        stav1.setText(user.getLoggedUser().getRezervaCast()+"/"+user.getLoggedUser().getRezerva()+"€");
         percent1.setText("0%");
         progressBar1.post(() -> {
             progressBar1.setProgress(0);
         });
 
-        stav2.setText("0/"+user.getLoggedUser().getMajetok()+"€");
+        stav2.setText(user.getLoggedUser().getMajetokCast()+"/"+user.getLoggedUser().getMajetok()+"€");
         percent2.setText("0%");
         progressBar2.post(() -> {
             progressBar2.setProgress(0);
+        });
+
+        goal1.setOnClickListener(view1 -> {
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString("nazovPlanu", "Železná zásoba");
+            dataToPass.putInt("cisloPlanu", 1);
+            dataToPass.putString("zostatokPlanu", String.valueOf(stav1.getText()));
+            dataToPass.putString("zostatok", format(zostatok));
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_sendMoneyFragment, dataToPass);
+        });
+
+        goal2.setOnClickListener(view1 -> {
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString("nazovPlanu", "Budovanie majetku");
+            dataToPass.putInt("cisloPlanu", 2);
+            dataToPass.putString("zostatokPlanu", String.valueOf(stav2.getText()));
+            dataToPass.putString("zostatok", format(zostatok));
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_sendMoneyFragment, dataToPass);
         });
 
         toAddMoneyScreenButton.setOnClickListener(view1 -> {

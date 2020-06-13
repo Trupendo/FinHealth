@@ -9,6 +9,8 @@ public class User {
     private double pMesPrijem;
     private double rezerva;
     private double majetok;
+    private double rezervaCast;
+    private double majetokCast;
 
     public User() {
     }
@@ -59,5 +61,21 @@ public class User {
 
     public void setMajetok(double majetok) {
         this.majetok = majetok;
+    }
+
+    public double getRezervaCast() {
+        return rezervaCast;
+    }
+
+    public void setRezervaCast(double rezervaCast) {
+        this.rezervaCast = rezervaCast;
+    }
+
+    public double getMajetokCast() {
+        return majetokCast;
+    }
+
+    public void setMajetokCast(double majetokCast) {
+        this.majetokCast = majetokCast;
     }
 }

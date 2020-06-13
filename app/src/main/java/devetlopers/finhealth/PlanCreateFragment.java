@@ -72,6 +72,8 @@ public class PlanCreateFragment extends Fragment {
             data.put("rezerva", rezerva);
             data.put("pMesPrijem", pMesPrijemValue);
             data.put("pMesVydavky", pMesVydavkyValue);
+            data.put("rezervaCast", 0);
+            data.put("majetokCast", 0);
 
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
@@ -79,6 +81,8 @@ public class PlanCreateFragment extends Fragment {
                 user.getLoggedUser().setMajetok(majetok);
                 user.getLoggedUser().setpMesPrijem(pMesPrijemValue);
                 user.getLoggedUser().setpMesVydavky(pMesVydavkyValue);
+                user.getLoggedUser().setRezervaCast(0);
+                user.getLoggedUser().setMajetokCast(0);
                 Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_sumarizationFragment);
             });
         });
