@@ -55,14 +55,14 @@
 
     <EditText
         android:id="@+id/rezervaPlan"
-        android:layout_width="145dp"
+        android:layout_width="95dp"
         android:layout_height="41dp"
         android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="v €"
         android:inputType="numberDecimal"
         android:textAlignment="textEnd"
-        app:layout_constraintEnd_toStartOf="@+id/euro1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/rezervaText"
         app:layout_constraintTop_toBottomOf="@+id/info2" />
@@ -72,13 +72,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/euro"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/pMesPrijem"
+        app:layout_constraintStart_toEndOf="@+id/rezervaPlan"
         app:layout_constraintTop_toBottomOf="@+id/info2" />
 
     <TextView
@@ -96,14 +93,15 @@
 
     <EditText
         android:id="@+id/budMajetkuPlan"
-        android:layout_width="0dp"
+        android:layout_width="95dp"
         android:layout_height="41dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="v €"
         android:inputType="numberDecimal"
         android:textAlignment="textEnd"
-        app:layout_constraintEnd_toStartOf="@+id/euro2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/budMajetkuText"
         app:layout_constraintTop_toBottomOf="@+id/rezervaPlan" />
 
@@ -111,14 +109,11 @@
         android:id="@+id/euro2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="41dp"
         android:text="@string/euro"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/pMesPrijem"
+        app:layout_constraintStart_toEndOf="@+id/budMajetkuPlan"
         app:layout_constraintTop_toBottomOf="@+id/euro1" />
 
     <View
