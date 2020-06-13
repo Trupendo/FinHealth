@@ -69,7 +69,6 @@ public class RegistrationFragment extends Fragment {
                     data.put("name", name);
                     data.put("surname", surname);
                     data.put("zostatok", 0);
-                    data.put("planCreated", false);
                     firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                         Toast.makeText(requireContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                     });
@@ -78,11 +77,7 @@ public class RegistrationFragment extends Fragment {
                             User user = runnable1.getResult().toObject(User.class);
                             SingletonUser user1 = SingletonUser.getInstance();
                             user1.setLoggedUser(user);
-                            if (!user1.getLoggedUser().isPlanCreated()) {
-                                Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_planCreateFragment);
-                            } else {
-                                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
-                            }
+                            Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_planCreateFragment);
                         } else
                             Toast.makeText(getContext(), "Could not fetch data", Toast.LENGTH_SHORT).show();
                     });

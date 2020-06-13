@@ -5,13 +5,10 @@ public class User {
     private String name;
     private String surname;
     private double zostatok;
-    private double rezervaPlan;
-    private double rezervaPercent;
-    private double majetokPlan;
-    private double majetokPercent;
-    private double customPlan;
-    private double customPercent;
-    private boolean planCreated = false;
+    private double pMesVydavky;
+    private double pMesPrijem;
+    private double rezerva;
+    private double majetok;
 
     public User() {
     }
@@ -32,51 +29,35 @@ public class User {
         this.zostatok = zostatok;
     }
 
-    public double getRezervaPlan() {
-        return rezervaPlan;
+    public double getpMesVydavky() {
+        return pMesVydavky;
     }
 
-    public void setRezervaPlan(double rezervaPlan) {
-        this.rezervaPlan = rezervaPlan;
+    public void setpMesVydavky(double pMesVydavky) {
+        this.pMesVydavky = pMesVydavky;
     }
 
-    public double getCustomPlan() {
-        return customPlan;
+    public double getpMesPrijem() {
+        return pMesPrijem;
     }
 
-    public void setCustomPlan(double customPlan) {
-        this.customPlan = customPlan;
+    public void setpMesPrijem(double pMesPrijem) {
+        this.pMesPrijem = pMesPrijem;
     }
 
-    public boolean isPlanCreated() {
-        return planCreated;
+    public double getRezerva() {
+        return rezerva;
     }
 
-    public void setPlanCreated(boolean planCreated) {
-        this.planCreated = planCreated;
+    public void setRezerva(double rezerva) {
+        this.rezerva = rezerva;
     }
 
-    public double getRezervaPercent() {
-        return rezervaPercent;
+    public double getMajetok() {
+        return majetok;
     }
 
-    public void setRezervaPercent(double rezervaPercent) {
-        this.rezervaPercent = rezervaPercent;
-    }
-
-    public double getMajetokPlan() {
-        return majetokPlan;
-    }
-
-    public void setMajetokPlan(double majetokPlan) {
-        this.majetokPlan = majetokPlan;
-    }
-
-    public double getMajetokPercent() {
-        return majetokPercent;
-    }
-
-    public void setMajetokPercent(double majetokPercent) {
-        this.majetokPercent = majetokPercent;
+    public void setMajetok(double majetok) {
+        this.majetok = majetok;
     }
 }

@@ -53,32 +53,32 @@ public class PlanCreateFragment extends Fragment {
         CheckBox rodina0 = view.findViewById(R.id.checkBox3);
         Button confirmButton = view.findViewById(R.id.createPlanBtn);
 
-        if (user.getLoggedUser().isPlanCreated()) {
-            Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_sumarizationFragment);
-        }
-
         confirmButton.setOnClickListener(v -> {
-            double pMesVydavky = Double.parseDouble(String.valueOf(pMesVydavky0.getText()));
-            double pMesPrijem = Double.parseDouble(String.valueOf(pMesPrijem0.getText()));
+            double pMesVydavkyValue = Double.parseDouble(String.valueOf(pMesVydavky0.getText()));
+            double pMesPrijemValue = Double.parseDouble(String.valueOf(pMesPrijem0.getText()));
             boolean rizPovolanie = rizPovolanie0.isChecked();
             boolean TPP = TPP0.isChecked();
             boolean rodina = rodina0.isChecked();
-            double rezervaPlan;
-            double budMajetkuPlan;
-            if (rizPovolanie == false && TPP == true && rodina == false) {
-                rezervaPlan = 3*pMesVydavky;
-            }
-            else rezervaPlan = 6*pMesVydavky;
-            budMajetkuPlan = 0.1*pMesPrijem;
+            double rezerva;
+            double majetok;
+
+            if (!rizPovolanie && TPP && !rodina) {
+                rezerva = 3 * pMesVydavkyValue;
+            } else rezerva = 6 * pMesVydavkyValue;
+            majetok = 0.1 * pMesPrijemValue;
+
             HashMap<String, Object> data = new HashMap<>();
-            data.put("rezervaPlan", rezervaPlan);
-            data.put("budMajetkuPlan", budMajetkuPlan);
-            data.put("planCreated", true);
+            data.put("majetok", majetok);
+            data.put("rezerva", rezerva);
+            data.put("pMesPrijem", pMesPrijemValue);
+            data.put("pMesVydavky", pMesVydavkyValue);
+
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
-                user.getLoggedUser().setPlanCreated(true);
-                user.getLoggedUser().setRezervaPlan(rezervaPlan);
-                user.getLoggedUser().setRezervaPercent(budMajetkuPlan);
+                user.getLoggedUser().setRezerva(rezerva);
+                user.getLoggedUser().setMajetok(majetok);
+                user.getLoggedUser().setpMesPrijem(pMesPrijemValue);
+                user.getLoggedUser().setpMesVydavky(pMesVydavkyValue);
                 Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_sumarizationFragment);
             });
         });

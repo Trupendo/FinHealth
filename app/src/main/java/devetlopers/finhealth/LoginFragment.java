@@ -75,11 +75,7 @@ public class LoginFragment extends Fragment {
                             User user = runnable1.getResult().toObject(User.class);
                             SingletonUser user1 = SingletonUser.getInstance();
                             user1.setLoggedUser(user);
-                            if (!user1.getLoggedUser().isPlanCreated()) {
-                                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
-                            } else {
-                                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
-                            }
+                            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
                         } else
                             Toast.makeText(getContext(), "Could not fetch data", Toast.LENGTH_SHORT).show();
                     });

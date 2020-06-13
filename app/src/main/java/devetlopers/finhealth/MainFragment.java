@@ -66,19 +66,22 @@ public class MainFragment extends Fragment {
             Toast.makeText(requireContext(), "gg", Toast.LENGTH_SHORT).show();
         });
 
-
-        double stav1zatial = user.getLoggedUser().getZostatok()*(user.getLoggedUser().getRezervaPercent()/100);
-        double percent1value = stav1zatial/user.getLoggedUser().getRezervaPlan()*100;
-        double zostatokZatial = user.getLoggedUser().getZostatok()-stav1zatial;
-
         dashoard.append(" - "+user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
 
-        zostatokValue.setText(format(zostatokZatial)+"€");
+        double zostatok = user.getLoggedUser().getZostatok();
 
-        stav1.setText(format(stav1zatial)+"/"+user.getLoggedUser().getRezervaPlan()+"€");
-        percent1.setText(format(percent1value)+"%");
+        zostatokValue.setText(format(zostatok)+"€");
+
+        stav1.setText("0/"+user.getLoggedUser().getRezerva()+"€");
+        percent1.setText("0%");
         progressBar1.post(() -> {
-            progressBar1.setProgress((int) percent1value);
+            progressBar1.setProgress(0);
+        });
+
+        stav2.setText("0/"+user.getLoggedUser().getMajetok()+"€");
+        percent2.setText("0%");
+        progressBar2.post(() -> {
+            progressBar2.setProgress(0);
         });
 
         toAddMoneyScreenButton.setOnClickListener(view1 -> {
