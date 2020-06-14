@@ -61,11 +61,15 @@ public class SumarizationFragment extends Fragment {
             data.put("rezerva", rezervaNew);
 
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
-                Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
-                user.getLoggedUser().setRezerva(rezervaNew);
-                user.getLoggedUser().setMajetok(majetokNew);
+                if (runnable1.isSuccessful()) {
+                    user.getLoggedUser().setRezerva(rezervaNew);
+                    user.getLoggedUser().setMajetok(majetokNew);
+                    Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.action_sumarizationFragment_to_mainFragment);
+                } else {
+                    Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
             });
-            Navigation.findNavController(view).navigate(R.id.action_sumarizationFragment_to_mainFragment);
         });
     }
 }

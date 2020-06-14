@@ -25,7 +25,7 @@
         android:id="@+id/addMoneyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:text="Potvrdiť"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="18sp"
