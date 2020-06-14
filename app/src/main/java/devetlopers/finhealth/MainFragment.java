@@ -65,22 +65,26 @@ public class MainFragment extends Fragment {
         LinearLayout goal2 = view.findViewById(R.id.goal2);
         LinearLayout goal3 = view.findViewById(R.id.goal3);
 
-        dashoard.append(" - "+user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
+        dashoard.append(" - " + user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
 
         double zostatok = user.getLoggedUser().getZostatok();
 
-        zostatokValue.setText(format(zostatok)+"€");
+        zostatokValue.setText(format(zostatok) + "€");
 
-        stav1.setText(user.getLoggedUser().getRezervaCast()+"/"+user.getLoggedUser().getRezerva()+"€");
-        percent1.setText("0%");
+        stav1.setText(user.getLoggedUser().getRezervaCast() + "/" + user.getLoggedUser().getRezerva() + "€");
+        double percentoDouble1 = user.getLoggedUser().getRezervaCast() / user.getLoggedUser().getRezerva() * 100;
+        int percentoInt1 = (int) percentoDouble1;
+        percent1.setText(percentoInt1 + "%");
         progressBar1.post(() -> {
-            progressBar1.setProgress(0);
+            progressBar1.setProgress(percentoInt1);
         });
 
-        stav2.setText(user.getLoggedUser().getMajetokCast()+"/"+user.getLoggedUser().getMajetok()+"€");
-        percent2.setText("0%");
+        stav2.setText(user.getLoggedUser().getMajetokCast() + "/" + user.getLoggedUser().getMajetok() + "€");
+        double percentoDouble2 = user.getLoggedUser().getMajetokCast() / user.getLoggedUser().getMajetok() * 100;
+        int percentoInt2 = (int) percentoDouble2;
+        percent2.setText(percentoInt2+"%");
         progressBar2.post(() -> {
-            progressBar2.setProgress(0);
+            progressBar2.setProgress(percentoInt2);
         });
 
         goal1.setOnClickListener(view1 -> {
