@@ -50,11 +50,18 @@ public class AddMoneyFragment extends Fragment {
 
         addMoneyButton.setOnClickListener(view1 -> {
             double suma = Double.parseDouble(String.valueOf(sumaEditText.getText()));
+
+            double percenta = suma / 100 * user.getLoggedUser().getMajetokInc();
+            double novyMajetok = user.getLoggedUser().getMajetok() + percenta;
+            user.getLoggedUser().setMajetok(novyMajetok);
+            user.getLoggedUser().setZostatok(user.getLoggedUser().getZostatok() + suma);
+
+
             HashMap<String, Object> data = new HashMap<>();
             data.put("zostatok", user.getLoggedUser().getZostatok() + suma);
-            if (user.getLoggedUser().getVyplata() != 0) user.getLoggedUser().setMajetok(user.getLoggedUser().getMajetok() + user.getLoggedUser().getmVkladMajetok());
-            user.getLoggedUser().setZostatok(user.getLoggedUser().getZostatok() + suma);
-            user.getLoggedUser().setVyplata(user.getLoggedUser().getVyplata() + 1);
+            data.put("majetok", novyMajetok);
+
+
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
             });

@@ -4,12 +4,14 @@ public class User {
 
     private String name;
     private String surname;
-    private int vyplata;
     private double zostatok;
     private double pMesVydavky;
     private double pMesPrijem;
     private double rezerva;
-    private double mVkladMajetok;
+
+    private boolean prvaVyplata = true;
+    private double majetokInc = 10;
+
     private double majetok;
     private double rezervaCast;
     private double majetokCast;
@@ -89,19 +91,19 @@ public class User {
         this.surname = surname;
     }
 
-    public double getmVkladMajetok() {
-        return mVkladMajetok;
+    public boolean isPrvaVyplata() {
+        return prvaVyplata;
     }
 
-    public void setmVkladMajetok(double mVkladMajetok) {
-        this.mVkladMajetok = mVkladMajetok;
+    public void setPrvaVyplata(boolean prvaVyplata) {
+        this.prvaVyplata = prvaVyplata;
     }
 
-    public int getVyplata() {
-        return vyplata;
+    public double getMajetokInc() {
+        return majetokInc;
     }
 
-    public void setVyplata(int vyplata) {
-        this.vyplata = vyplata;
+    public void setMajetokInc(double majetokInc) {
+        this.majetokInc = majetokInc;
     }
 }
