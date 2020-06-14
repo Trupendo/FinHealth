@@ -4,10 +4,12 @@ public class User {
 
     private String name;
     private String surname;
+    private int vyplata;
     private double zostatok;
     private double pMesVydavky;
     private double pMesPrijem;
     private double rezerva;
+    private double mVkladMajetok;
     private double majetok;
     private double rezervaCast;
     private double majetokCast;
@@ -77,5 +79,29 @@ public class User {
 
     public void setMajetokCast(double majetokCast) {
         this.majetokCast = majetokCast;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public double getmVkladMajetok() {
+        return mVkladMajetok;
+    }
+
+    public void setmVkladMajetok(double mVkladMajetok) {
+        this.mVkladMajetok = mVkladMajetok;
+    }
+
+    public int getVyplata() {
+        return vyplata;
+    }
+
+    public void setVyplata(int vyplata) {
+        this.vyplata = vyplata;
     }
 }

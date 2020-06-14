@@ -61,6 +61,7 @@ public class PlanCreateFragment extends Fragment {
             boolean rodina = rodina0.isChecked();
             double rezerva;
             double majetok;
+            double mVkladMajetok;
 
             if (!rizPovolanie && TPP && !rodina) {
                 rezerva = 3 * pMesVydavkyValue;
@@ -79,6 +80,7 @@ public class PlanCreateFragment extends Fragment {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                 user.getLoggedUser().setRezerva(rezerva);
                 user.getLoggedUser().setMajetok(majetok);
+                user.getLoggedUser().setmVkladMajetok(majetok);
                 user.getLoggedUser().setpMesPrijem(pMesPrijemValue);
                 user.getLoggedUser().setpMesVydavky(pMesVydavkyValue);
                 user.getLoggedUser().setRezervaCast(0);
