@@ -50,20 +50,20 @@ public class SumarizationFragment extends Fragment {
         double majetok = user.getLoggedUser().getMajetok();
 
         rezervaPlan.setText(String.valueOf(rezerva));
-        budMajetkuPlan.setText(String.valueOf(majetok));
+        budMajetkuPlan.setText(String.valueOf(user.getLoggedUser().getMajetokInc()));
 
         confirmButton.setOnClickListener(v -> {
             double rezervaNew = Double.parseDouble(String.valueOf(rezervaPlan.getText()));
-            double majetokNew = Double.parseDouble(String.valueOf(budMajetkuPlan.getText()));
+            double majetokPercent = Double.parseDouble(String.valueOf(budMajetkuPlan.getText()));
 
             HashMap<String, Object> data = new HashMap<>();
-            data.put("majetok", majetokNew);
+            data.put("majetokInc", majetokPercent);
             data.put("rezerva", rezervaNew);
 
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 if (runnable1.isSuccessful()) {
                     user.getLoggedUser().setRezerva(rezervaNew);
-                    user.getLoggedUser().setMajetok(majetokNew);
+                    user.getLoggedUser().setMajetokInc(majetokPercent);
                     Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                     Navigation.findNavController(view).navigate(R.id.action_sumarizationFragment_to_mainFragment);
                 } else {

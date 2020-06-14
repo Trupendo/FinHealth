@@ -66,25 +66,28 @@ public class PlanCreateFragment extends Fragment {
             if (!rizPovolanie && TPP && !rodina) {
                 rezerva = 3 * pMesVydavkyValue;
             } else rezerva = 6 * pMesVydavkyValue;
-            majetok = 0.1 * pMesPrijemValue;
+//            majetok = 0.1 * pMesPrijemValue;
 
             HashMap<String, Object> data = new HashMap<>();
-            data.put("majetok", majetok);
+            data.put("majetok", 0);
             data.put("rezerva", rezerva);
             data.put("pMesPrijem", pMesPrijemValue);
             data.put("pMesVydavky", pMesVydavkyValue);
             data.put("rezervaCast", 0);
             data.put("majetokCast", 0);
+            data.put("prvaVyplata", true);
+            data.put("majetokInc", 10);
 
             firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
                 Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                 user.getLoggedUser().setRezerva(rezerva);
-                user.getLoggedUser().setMajetok(majetok);
-                user.getLoggedUser().setmVkladMajetok(majetok);
+                user.getLoggedUser().setMajetok(0);
                 user.getLoggedUser().setpMesPrijem(pMesPrijemValue);
                 user.getLoggedUser().setpMesVydavky(pMesVydavkyValue);
                 user.getLoggedUser().setRezervaCast(0);
                 user.getLoggedUser().setMajetokCast(0);
+                user.getLoggedUser().setPrvaVyplata(true);
+                user.getLoggedUser().setMajetokInc(10);
                 Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_sumarizationFragment);
             });
         });

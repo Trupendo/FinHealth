@@ -59,7 +59,7 @@ public class SendMoneyFragment extends Fragment {
 
         nazovPlanuText.setText(nazovPlanu);
         stavPlanuText.setText(zostatokPlanu);
-        zostatokText.setText(zostatok);
+        zostatokText.setText(zostatok+"€");
 
         potvrdit.setOnClickListener(view1 -> {
             try {
