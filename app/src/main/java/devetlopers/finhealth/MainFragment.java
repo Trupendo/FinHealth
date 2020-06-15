@@ -49,6 +49,8 @@ public class MainFragment extends Fragment {
         SingletonUser user = SingletonUser.getInstance();
 
         FloatingActionButton toAddMoneyScreenButton = view.findViewById(R.id.btnToAddMoneyScreen);
+        FloatingActionButton removeMoneyButton = view.findViewById(R.id.btnRemoveZostatok);
+        FloatingActionButton settingGoalButton = view.findViewById(R.id.btnSettingPlan);
         TextView zostatokValue = view.findViewById(R.id.zostatokValue);
         TextView dashoard = view.findViewById(R.id.dashboard);
         TextView stav1 = view.findViewById(R.id.stav1);
@@ -107,6 +109,14 @@ public class MainFragment extends Fragment {
 
         toAddMoneyScreenButton.setOnClickListener(view1 -> {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_addMoneyFragment);
+        });
+
+        removeMoneyButton.setOnClickListener(view1 -> {
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_removeMoneyFragment);
+        });
+
+        settingGoalButton.setOnClickListener(view1 -> {
+            Navigation.findNavController(view).navigate(R.id.action_global_sumarizationFragment);
         });
     }
 

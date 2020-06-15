@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="Čokoľvek si viete predstaviť ináč, môžete teraz, alebo v čase meniť."
+        android:text="Čokoľvek si viete predstaviť inak, môžete teraz, alebo v čase meniť."
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
