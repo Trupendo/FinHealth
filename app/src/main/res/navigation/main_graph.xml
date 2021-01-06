@@ -41,8 +41,8 @@
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registrationFragment_to_planCreateFragment"
-            app:destination="@id/planCreateFragment" />
+            android:id="@+id/action_registrationFragment_to_addExpensesFragment2"
+            app:destination="@id/addExpensesFragment2" />
     </fragment>
     <fragment
         android:id="@+id/addMoneyFragment"
@@ -76,5 +76,14 @@
         android:id="@+id/removeMoneyFragment"
         android:name="devetlopers.finhealth.RemoveMoneyFragment"
         android:label="fragment_remove_money"
-        tools:layout="@layout/fragment_remove_money" /><action android:id="@+id/action_global_sumarizationFragment" app:destination="@id/sumarizationFragment"/>
+        tools:layout="@layout/fragment_remove_money" /><action android:id="@+id/action_global_sumarizationFragment" app:destination="@id/sumarizationFragment"/><action android:id="@+id/action_global_loginFragment" app:destination="@id/loginFragment"/>
+    <fragment
+        android:id="@+id/addExpensesFragment2"
+        android:name="devetlopers.finhealth.AddExpensesFragment"
+        android:label="fragment_add_expenses"
+        tools:layout="@layout/fragment_add_expenses" >
+        <action
+            android:id="@+id/action_addExpensesFragment2_to_planCreateFragment"
+            app:destination="@id/planCreateFragment" />
+    </fragment>
 </navigation>

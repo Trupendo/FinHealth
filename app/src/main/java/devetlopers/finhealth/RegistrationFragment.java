@@ -20,10 +20,6 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class RegistrationFragment extends Fragment {
 
     public RegistrationFragment() {
@@ -42,6 +38,7 @@ public class RegistrationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button registerButton = view.findViewById(R.id.registerButton);
+        Button loginButton = view.findViewById(R.id.loginButton);
         TextView emailField = view.findViewById(R.id.emailFieldReg);
         TextView passwordField = view.findViewById(R.id.passwordFieldReg);
         TextView nameField = view.findViewById(R.id.nameFieldReg);
@@ -77,7 +74,7 @@ public class RegistrationFragment extends Fragment {
                             User user = runnable1.getResult().toObject(User.class);
                             SingletonUser user1 = SingletonUser.getInstance();
                             user1.setLoggedUser(user);
-                            Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_planCreateFragment);
+                            Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_addExpensesFragment2);
                         } else
                             Toast.makeText(getContext(), "Could not fetch data", Toast.LENGTH_SHORT).show();
                     });
@@ -86,6 +83,10 @@ public class RegistrationFragment extends Fragment {
                     Toast.makeText(getContext(), "Nepodarilo sa registrovať", Toast.LENGTH_SHORT).show();
                 }
             });
+        });
+
+        loginButton.setOnClickListener(view1 -> {
+            Navigation.findNavController(view).navigate(R.id.action_global_loginFragment);
         });
     }
 }
