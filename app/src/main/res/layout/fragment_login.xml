@@ -74,6 +74,8 @@
                     android:id="@+id/emailField"
                     android:layout_width="320dp"
                     android:layout_height="40dp"
+                    android:textSize="16sp"
+                    android:textColor="#232323"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress" />
 
@@ -113,6 +115,8 @@
                     android:id="@+id/passwordField"
                     android:layout_width="320dp"
                     android:layout_height="40dp"
+                    android:textSize="16sp"
+                    android:textColor="#232323"
                     android:importantForAutofill="no"
                     android:inputType="textPassword" />
 
