@@ -323,5 +323,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnRemoveZostatok" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
