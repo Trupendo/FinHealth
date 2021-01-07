@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,10 @@ import java.util.HashMap;
 
 public class AddIncomesFragment extends Fragment {
     public double pMesPrijem;
+    private EditText prijem10;
+    private EditText prijem20;
+    private EditText osobitnePrijmy0;
+    private TextView continuousIncomes0;
     AddExpensesFragment addExpensesFragment = new AddExpensesFragment();
 
     public AddIncomesFragment() {
@@ -45,38 +51,28 @@ public class AddIncomesFragment extends Fragment {
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         SingletonUser user = SingletonUser.getInstance();
 
-        EditText prijem10 = view.findViewById(R.id.prijem1);
-        EditText prijem20 = view.findViewById(R.id.prijem2);
-        EditText osobitnePrijmy0 = view.findViewById(R.id.osobitnePrijmy);
+        prijem10 = view.findViewById(R.id.prijem1);
+        prijem20 = view.findViewById(R.id.prijem2);
+        osobitnePrijmy0 = view.findViewById(R.id.osobitnePrijmy);
+        continuousIncomes0 = view.findViewById(R.id.continuousIncomes);
         CheckBox rizPovolanie0 = view.findViewById(R.id.checkBox1);
         CheckBox TPP0 = view.findViewById(R.id.checkBox2);
         CheckBox rodina0 = view.findViewById(R.id.checkBox3);
-        TextView continuousIncomes0 = view.findViewById(R.id.continuousIncomes);
         FloatingActionButton updateIncomes = view.findViewById(R.id.updateIncomes);
         Button confirmButton = view.findViewById(R.id.createPlanBtn);
 
         updateIncomes.setOnClickListener(view1 -> {
-            double prijem1 = Double.parseDouble(String.valueOf(prijem10.getText()));
-            double prijem2 = Double.parseDouble(String.valueOf(prijem20.getText()));
-            double osobitnePrijmy = Double.parseDouble(String.valueOf(osobitnePrijmy0.getText()));
-
-            pMesPrijem = prijem1 + prijem2 + osobitnePrijmy;
-            continuousIncomes0.setText(Double.toString(pMesPrijem));
-            System.out.println(addExpensesFragment.sucetVydavkov);
+            scitajPrijmy();
         });
 
         confirmButton.setOnClickListener(v -> {
-            double prijem1 = Double.parseDouble(String.valueOf(prijem10.getText()));
-            double prijem2 = Double.parseDouble(String.valueOf(prijem20.getText()));
-            double osobitnePrijmy = Double.parseDouble(String.valueOf(osobitnePrijmy0.getText()));
+            scitajPrijmy();
             boolean rizPovolanie = rizPovolanie0.isChecked();
             boolean TPP = TPP0.isChecked();
             boolean rodina = rodina0.isChecked();
             double rezerva;
             double majetok;
             double mVkladMajetok;
-
-            pMesPrijem = prijem1 + prijem2 + osobitnePrijmy;
 
             if (!rizPovolanie && TPP && !rodina) {
                 rezerva = 3 * addExpensesFragment.sucetVydavkov;
@@ -87,6 +83,7 @@ public class AddIncomesFragment extends Fragment {
             data.put("majetok", 0);
             data.put("rezerva", rezerva);
             data.put("pMesPrijem", pMesPrijem);
+            data.put("pMesVydavky", addExpensesFragment.sucetVydavkov);
             data.put("rezervaCast", 0);
             data.put("majetokCast", 0);
             data.put("prvaVyplata", true);
@@ -105,5 +102,79 @@ public class AddIncomesFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_planCreateFragment_to_sumarizationFragment);
             });
         });
+
+        prijem10.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajPrijmy();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        prijem20.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajPrijmy();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        osobitnePrijmy0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajPrijmy();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+    public void scitajPrijmy() {
+        double prijem1 = 0;
+        double prijem2 = 0;
+        double osobitnePrijmy = 0;
+
+        try {
+            prijem1 = Double.parseDouble(String.valueOf(prijem10.getText()));
+        } catch (Exception e) {
+            prijem1 = 0;
+        }
+        try {
+            prijem2 = Double.parseDouble(String.valueOf(prijem20.getText()));
+        } catch (Exception e) {
+            prijem2 = 0;
+        }
+        try {
+            osobitnePrijmy = Double.parseDouble(String.valueOf(osobitnePrijmy0.getText()));
+        } catch (Exception e) {
+            osobitnePrijmy = 0;
+        }
+
+        pMesPrijem = prijem1 + prijem2 + osobitnePrijmy;
+        continuousIncomes0.setText(Double.toString(pMesPrijem));
     }
 }

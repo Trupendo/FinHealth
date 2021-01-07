@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +26,7 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class AddExpensesFragment extends Fragment {
-    public double sucetVydavkov;
+    public static double sucetVydavkov;
     private EditText hypoteka0;
     private EditText energie0;
     private EditText pohonneHmoty0;
@@ -33,6 +35,7 @@ public class AddExpensesFragment extends Fragment {
     private EditText televizia0;
     private EditText stravovanie0;
     private EditText barber0;
+    private TextView continuousExpenses0;
 
     public AddExpensesFragment() {
         // Required empty public constructor
@@ -51,7 +54,7 @@ public class AddExpensesFragment extends Fragment {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         SingletonUser user = SingletonUser.getInstance();
-        
+
         Button confirmButton = view.findViewById(R.id.confirmExpenses);
         FloatingActionButton updateExpenses = view.findViewById(R.id.updateExpenses);
         hypoteka0 = view.findViewById(R.id.hypoteka);
@@ -62,34 +65,209 @@ public class AddExpensesFragment extends Fragment {
         televizia0 = view.findViewById(R.id.televizia);
         stravovanie0 = view.findViewById(R.id.stravovanie);
         barber0 = view.findViewById(R.id.barber);
-        TextView continuousExpenses0 = view.findViewById(R.id.continuousExpenses);
+        continuousExpenses0 = view.findViewById(R.id.continuousExpenses);
 
 
         updateExpenses.setOnClickListener(view1 -> {
             scitajVydavky();
-            continuousExpenses0.setText(Double.toString(sucetVydavkov));
         });
 
         confirmButton.setOnClickListener(view1 -> {
             scitajVydavky();
-            System.out.println(sucetVydavkov);
             Navigation.findNavController(view).navigate(R.id.action_addExpensesFragment2_to_planCreateFragment);
         });
+
+        hypoteka0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajVydavky();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        energie0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajVydavky();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        pohonneHmoty0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajVydavky();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        doprava0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajVydavky();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        telefon0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajVydavky();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        televizia0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajVydavky();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        stravovanie0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajVydavky();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        barber0.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                scitajVydavky();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
     public void scitajVydavky() {
         double hypoteka = 0;
-        if (hypoteka0.getText().equals("")) {
-            System.out.println("Dajme tomu");
+        double energie = 0;
+        double pohonneHmoty = 0;
+        double doprava = 0;
+        double telefon = 0;
+        double televizia = 0;
+        double stravovanie = 0;
+        double barber = 0;
+
+        try {
             hypoteka = Double.parseDouble(String.valueOf(hypoteka0.getText()));
-        } else hypoteka = 0;
-        double energie = Double.parseDouble(String.valueOf(energie0.getText()));
-        double pohonneHmoty = Double.parseDouble(String.valueOf(pohonneHmoty0.getText()));
-        double doprava = Double.parseDouble(String.valueOf(doprava0.getText()));
-        double telefon = Double.parseDouble(String.valueOf(telefon0.getText()));
-        double televizia = Double.parseDouble(String.valueOf(televizia0.getText()));
-        double stravovanie = Double.parseDouble(String.valueOf(stravovanie0.getText()));
-        double barber = Double.parseDouble(String.valueOf(barber0.getText()));
+        } catch (Exception e) {
+            hypoteka = 0;
+        }
+        try {
+            energie = Double.parseDouble(String.valueOf(energie0.getText()));
+        } catch (Exception e) {
+            energie = 0;
+        }
+        try {
+            pohonneHmoty = Double.parseDouble(String.valueOf(pohonneHmoty0.getText()));
+        } catch (Exception e) {
+            pohonneHmoty = 0;
+        }
+        try {
+            doprava = Double.parseDouble(String.valueOf(doprava0.getText()));
+        } catch (Exception e) {
+            doprava = 0;
+        }
+        try {
+            telefon = Double.parseDouble(String.valueOf(telefon0.getText()));
+        } catch (Exception e) {
+            telefon = 0;
+        }
+        try {
+            televizia = Double.parseDouble(String.valueOf(televizia0.getText()));
+        } catch (Exception e) {
+            televizia = 0;
+        }
+        try {
+            stravovanie = Double.parseDouble(String.valueOf(stravovanie0.getText()));
+        } catch (Exception e) {
+            stravovanie = 0;
+        }
+        try {
+            barber = Double.parseDouble(String.valueOf(barber0.getText()));
+        } catch (Exception e) {
+            barber = 0;
+        }
+
         sucetVydavkov = hypoteka + energie + pohonneHmoty + doprava + telefon + televizia + stravovanie + barber;
+        continuousExpenses0.setText(Double.toString(sucetVydavkov));
     }
 }
