@@ -51,9 +51,9 @@
         tools:layout="@layout/fragment_add_money" />
     <fragment
         android:id="@+id/planCreateFragment"
-        android:name="devetlopers.finhealth.PlanCreateFragment"
+        android:name="devetlopers.finhealth.AddIncomesFragment"
         android:label="fragment_plan_create"
-        tools:layout="@layout/fragment_plan_create" >
+        tools:layout="@layout/fragment_add_incomes" >
         <action
             android:id="@+id/action_planCreateFragment_to_sumarizationFragment"
             app:destination="@id/sumarizationFragment" />
