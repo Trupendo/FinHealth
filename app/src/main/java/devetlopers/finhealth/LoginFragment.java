@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -20,16 +22,16 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class LoginFragment extends Fragment {
+
+    TextView login;
+    CardView email, password;
+    Button signInButton, signUpButton;
+    float v = 0;
 
     public LoginFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,12 +51,32 @@ public class LoginFragment extends Fragment {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        Button signUpButton = view.findViewById(R.id.signUpButton);
-        Button signInButton = view.findViewById(R.id.signInButton);
 //        Button signOutButton = view.findViewById(R.id.signOutButton);
         TextView emailField = view.findViewById(R.id.emailField);
         TextView passwordField = view.findViewById(R.id.passwordField);
+        login = view.findViewById(R.id.login);
+        email = view.findViewById(R.id.email);
+        password = view.findViewById(R.id.password);
+        signUpButton = view.findViewById(R.id.signUpButton);
+        signInButton = view.findViewById(R.id.signInButton);
 
+        login.setTranslationX(800);
+        email.setTranslationX(800);
+        password.setTranslationX(800);
+        signInButton.setTranslationX(800);
+        signUpButton.setTranslationX(800);
+
+        login.setAlpha(v);
+        email.setAlpha(v);
+        password.setAlpha(v);
+        signInButton.setAlpha(v);
+        signUpButton.setAlpha(v);
+
+        login.animate().translationX(0).alpha(1).setDuration(600).setStartDelay(100).start();
+        email.animate().translationX(0).alpha(1).setDuration(600).setStartDelay(200).start();
+        password.animate().translationX(0).alpha(1).setDuration(600).setStartDelay(300).start();
+        signInButton.animate().translationX(0).alpha(1).setDuration(600).setStartDelay(400).start();
+        signUpButton.animate().translationX(0).alpha(1).setDuration(600).setStartDelay(500).start();
 
         signUpButton.setOnClickListener(view1 -> {
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registrationFragment);

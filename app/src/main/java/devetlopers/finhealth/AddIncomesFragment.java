@@ -58,12 +58,7 @@ public class AddIncomesFragment extends Fragment {
         CheckBox rizPovolanie0 = view.findViewById(R.id.checkBox1);
         CheckBox TPP0 = view.findViewById(R.id.checkBox2);
         CheckBox rodina0 = view.findViewById(R.id.checkBox3);
-        FloatingActionButton updateIncomes = view.findViewById(R.id.updateIncomes);
         Button confirmButton = view.findViewById(R.id.createPlanBtn);
-
-        updateIncomes.setOnClickListener(view1 -> {
-            scitajPrijmy();
-        });
 
         confirmButton.setOnClickListener(v -> {
             scitajPrijmy();

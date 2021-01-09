@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/Grey">
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="#232323" />
-            <corners android:radius="12dp" />
-        </shape>
-    </item>
-    <item android:state_focused="true">
-        <shape android:shape="rectangle">
-            <solid android:color="#151515" />
+            <solid android:color="@color/Grey" />
             <corners android:radius="12dp" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#000000" />
+            <solid android:color="@color/Black" />
             <corners android:radius="12dp" />
         </shape>
     </item>
-</selector>
+</ripple>

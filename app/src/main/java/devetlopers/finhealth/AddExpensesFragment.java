@@ -56,7 +56,6 @@ public class AddExpensesFragment extends Fragment {
         SingletonUser user = SingletonUser.getInstance();
 
         Button confirmButton = view.findViewById(R.id.confirmExpenses);
-        FloatingActionButton updateExpenses = view.findViewById(R.id.updateExpenses);
         hypoteka0 = view.findViewById(R.id.hypoteka);
         energie0 = view.findViewById(R.id.energie);
         pohonneHmoty0 = view.findViewById(R.id.pohohonneHmoty);
@@ -66,11 +65,6 @@ public class AddExpensesFragment extends Fragment {
         stravovanie0 = view.findViewById(R.id.stravovanie);
         barber0 = view.findViewById(R.id.barber);
         continuousExpenses0 = view.findViewById(R.id.continuousExpenses);
-
-
-        updateExpenses.setOnClickListener(view1 -> {
-            scitajVydavky();
-        });
 
         confirmButton.setOnClickListener(view1 -> {
             scitajVydavky();
