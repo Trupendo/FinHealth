@@ -34,7 +34,10 @@
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment"
-            app:enterAnim="@android:anim/fade_in" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -77,7 +80,14 @@
         android:id="@+id/removeMoneyFragment"
         android:name="devetlopers.finhealth.RemoveMoneyFragment"
         android:label="fragment_remove_money"
-        tools:layout="@layout/fragment_remove_money" /><action android:id="@+id/action_global_sumarizationFragment" app:destination="@id/sumarizationFragment"/><action android:id="@+id/action_global_loginFragment" app:destination="@id/loginFragment"/>
+        tools:layout="@layout/fragment_remove_money" /><action android:id="@+id/action_global_sumarizationFragment" app:destination="@id/sumarizationFragment"/>
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment"
+        app:enterAnim="@anim/from_left"
+        app:exitAnim="@anim/to_right"
+        app:popEnterAnim="@anim/from_right"
+        app:popExitAnim="@anim/to_left" />
     <fragment
         android:id="@+id/addExpensesFragment2"
         android:name="devetlopers.finhealth.AddExpensesFragment"
