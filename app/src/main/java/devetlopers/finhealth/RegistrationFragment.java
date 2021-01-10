@@ -87,21 +87,19 @@ public class RegistrationFragment extends Fragment {
             String name = String.valueOf(nameField.getText());
             String surname = String.valueOf(surnameField.getText());
             if (email.equals("") || password.equals("") || name.equals("") || surname.equals("")) {
-                emailField.setError("Povinne more!");
-                passwordField.setError("Povinne more!");
-                nameField.setError("Povinne more!");
-                surnameField.setError("Povinne more!");
+                emailField.setError("Povinne pole");
+                passwordField.setError("Povinne pol!");
+                nameField.setError("Povinne pole");
+                surnameField.setError("Povinne pole");
                 return;
             }
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(runnable -> {
                 if (runnable.isSuccessful()) {
-                    Toast.makeText(getContext(), "Registrácia prebehla úspešne!", Toast.LENGTH_SHORT).show();
                     HashMap<String, Object> data = new HashMap<>();
                     data.put("name", name);
                     data.put("surname", surname);
                     data.put("zostatok", 0);
                     firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
-                        Toast.makeText(requireContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                     });
                     firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).get().addOnCompleteListener(runnable1 -> {
                         if (runnable1.isSuccessful()) {
@@ -109,11 +107,9 @@ public class RegistrationFragment extends Fragment {
                             SingletonUser user1 = SingletonUser.getInstance();
                             user1.setLoggedUser(user);
                             Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_addExpensesFragment2);
-                        } else
-                            Toast.makeText(getContext(), "Could not fetch data", Toast.LENGTH_SHORT).show();
+                        }
                     });
                 } else {
-                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                     Toast.makeText(getContext(), "Nepodarilo sa registrovať", Toast.LENGTH_SHORT).show();
                 }
             });

@@ -64,7 +64,6 @@ public class SumarizationFragment extends Fragment {
                 if (runnable1.isSuccessful()) {
                     user.getLoggedUser().setRezerva(rezervaNew);
                     user.getLoggedUser().setMajetokInc(majetokPercent);
-                    Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
                     Navigation.findNavController(view).navigate(R.id.action_sumarizationFragment_to_mainFragment);
                 } else {
                     Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show();

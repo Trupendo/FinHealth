@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,6 +37,9 @@ public class AddExpensesFragment extends Fragment {
     private EditText stravovanie0;
     private EditText barber0;
     private TextView continuousExpenses0;
+
+    LottieAnimationView lottieAnimationView;
+
 
     public AddExpensesFragment() {
         // Required empty public constructor
@@ -65,6 +69,7 @@ public class AddExpensesFragment extends Fragment {
         stravovanie0 = view.findViewById(R.id.stravovanie);
         barber0 = view.findViewById(R.id.barber);
         continuousExpenses0 = view.findViewById(R.id.continuousExpenses);
+        lottieAnimationView = view.findViewById(R.id.animation);
 
         confirmButton.setOnClickListener(view1 -> {
             scitajVydavky();

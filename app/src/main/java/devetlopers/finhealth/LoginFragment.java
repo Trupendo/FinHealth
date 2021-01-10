@@ -86,8 +86,8 @@ public class LoginFragment extends Fragment {
             String email = String.valueOf(emailField.getText());
             String password = String.valueOf(passwordField.getText());
             if (email.equals("") || password.equals("")) {
-                emailField.setError("Povinne more!");
-                passwordField.setError("Povinne more!");
+                emailField.setError("Povinne pole");
+                passwordField.setError("Povinne pole");
                 return;
             }
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(runnable -> {
@@ -98,11 +98,10 @@ public class LoginFragment extends Fragment {
                             SingletonUser user1 = SingletonUser.getInstance();
                             user1.setLoggedUser(user);
                             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
-                        } else
-                            Toast.makeText(getContext(), "Could not fetch data", Toast.LENGTH_SHORT).show();
+                        }
                     });
                 } else
-                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Nepodarilo sa prihlásiť", Toast.LENGTH_SHORT).show();
             });
         });
 
