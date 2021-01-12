@@ -93,6 +93,8 @@ public class RegistrationFragment extends Fragment {
                 surnameField.setError("Povinne pole");
                 return;
             }
+            LoadingRegDialog loadingRegDialog = new LoadingRegDialog(requireContext());
+            loadingRegDialog.show();
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(runnable -> {
                 if (runnable.isSuccessful()) {
                     HashMap<String, Object> data = new HashMap<>();
@@ -106,11 +108,15 @@ public class RegistrationFragment extends Fragment {
                             User user = runnable1.getResult().toObject(User.class);
                             SingletonUser user1 = SingletonUser.getInstance();
                             user1.setLoggedUser(user);
+                            loadingRegDialog.dismiss();
                             Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_addExpensesFragment2);
                         }
                     });
                 } else {
-                    Toast.makeText(getContext(), "Nepodarilo sa registrovať", Toast.LENGTH_SHORT).show();
+                    loadingRegDialog.dismiss();
+                    ErrorDialog errorDialog = new ErrorDialog(requireContext());
+                    errorDialog.show();
+                    errorDialog.showDialog();
                 }
             });
         });

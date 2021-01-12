@@ -9,5 +9,6 @@
     <color name="DarkBlue">#2f2d41</color>
     <color name="Blue">#2375f0</color>
     <color name="LightBlue">#dde9fc</color>
+    <color name="Shadow">#32000000</color>
 
 </resources>

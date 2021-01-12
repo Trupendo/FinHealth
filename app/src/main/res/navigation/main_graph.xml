@@ -46,7 +46,11 @@
         tools:layout="@layout/fragment_registration" >
         <action
             android:id="@+id/action_registrationFragment_to_addExpensesFragment2"
-            app:destination="@id/addExpensesFragment2" />
+            app:destination="@id/addExpensesFragment2"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/addMoneyFragment"
@@ -60,7 +64,11 @@
         tools:layout="@layout/fragment_add_incomes" >
         <action
             android:id="@+id/action_planCreateFragment_to_sumarizationFragment"
-            app:destination="@id/sumarizationFragment" />
+            app:destination="@id/sumarizationFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
     <fragment
         android:id="@+id/sumarizationFragment"
@@ -95,6 +103,10 @@
         tools:layout="@layout/fragment_add_expenses" >
         <action
             android:id="@+id/action_addExpensesFragment2_to_planCreateFragment"
-            app:destination="@id/planCreateFragment" />
+            app:destination="@id/planCreateFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
 </navigation>

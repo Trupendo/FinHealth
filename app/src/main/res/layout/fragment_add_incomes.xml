@@ -30,7 +30,7 @@
         android:text="Vaše Príjmy"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textSize="32sp"
+        android:textSize="28sp"
         android:translationZ="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

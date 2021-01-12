@@ -1,5 +1,6 @@
 package devetlopers.finhealth;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class LoginFragment extends Fragment {
     CardView email, password;
     Button signInButton, signUpButton;
     float v = 0;
+    ProgressDialog progressDialog;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -90,6 +92,8 @@ public class LoginFragment extends Fragment {
                 passwordField.setError("Povinne pole");
                 return;
             }
+            LoadingLogDialog loadingLogDialog = new LoadingLogDialog(requireContext());
+            loadingLogDialog.show();
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(runnable -> {
                 if (runnable.isSuccessful()) {
                     firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).get().addOnCompleteListener(runnable1 -> {
@@ -97,11 +101,16 @@ public class LoginFragment extends Fragment {
                             User user = runnable1.getResult().toObject(User.class);
                             SingletonUser user1 = SingletonUser.getInstance();
                             user1.setLoggedUser(user);
+                            loadingLogDialog.dismiss();
                             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainFragment);
                         }
                     });
-                } else
-                    Toast.makeText(getContext(), "Nepodarilo sa prihlásiť", Toast.LENGTH_SHORT).show();
+                } else {
+                    loadingLogDialog.dismiss();
+                    ErrorDialog errorDialog = new ErrorDialog(requireContext());
+                    errorDialog.show();
+                    errorDialog.showDialog();
+                }
             });
         });
 
