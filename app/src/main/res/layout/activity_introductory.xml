@@ -6,19 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".IntroductoryActivity">
 
+    <!-- Pozadie -->
     <ImageView
         android:id="@+id/img"
         android:layout_width="wrap_content"
         android:layout_height="900dp"
         android:elevation="2dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/wannabe_background5"
+        android:src="@drawable/background_crop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
 
+    <!-- Logo -->
     <ImageView
         android:id="@+id/app_logo"
         android:layout_width="100dp"
@@ -31,6 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".1" />
 
+    <!-- Názov -->
     <TextView
         android:id="@+id/app_name"
         android:layout_width="300dp"
@@ -50,6 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/app_logo"
         app:layout_constraintVertical_bias=".03" />
 
+    <!-- Animácia -->
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie"
         android:layout_width="wrap_content"
@@ -59,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_name"
-        app:layout_constraintVertical_bias=".2"
+        app:layout_constraintVertical_bias=".3"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/security_check" />
 

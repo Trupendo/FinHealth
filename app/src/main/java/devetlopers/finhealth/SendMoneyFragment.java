@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -21,7 +22,7 @@ import java.util.HashMap;
 
 public class SendMoneyFragment extends Fragment {
 
-    double sumaNaPoslanie = 0;
+    private double sumaNaPoslanie = 0;
 
     public SendMoneyFragment() {
     }
@@ -77,9 +78,14 @@ public class SendMoneyFragment extends Fragment {
                         if (runnable1.isSuccessful()) {
                             user.getLoggedUser().setZostatok(user.getLoggedUser().getZostatok() - sumaNaPoslanie);
                             user.getLoggedUser().setRezervaCast(user.getLoggedUser().getRezervaCast() + sumaNaPoslanie);
-                            Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
+                            ProgressDialog progressDialog = new ProgressDialog(requireContext());
+                            progressDialog.show();
+                            progressDialog.showDialog();
+                            Navigation.findNavController(view).navigate(R.id.action_global_mainFragment);
                         } else {
-                            Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                            ErrorDialog errorDialog = new ErrorDialog(requireContext());
+                            errorDialog.show();
+                            errorDialog.showDialog();
                         }
                     });
                 } else if (cisloPlanu == 2) {
@@ -91,14 +97,21 @@ public class SendMoneyFragment extends Fragment {
                         if (runnable1.isSuccessful()) {
                             user.getLoggedUser().setZostatok(user.getLoggedUser().getZostatok() - sumaNaPoslanie);
                             user.getLoggedUser().setMajetokCast(user.getLoggedUser().getMajetokCast() + sumaNaPoslanie);
-                            Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
+                            ProgressDialog progressDialog = new ProgressDialog(requireContext());
+                            progressDialog.show();
+                            progressDialog.showDialog();
+                            Navigation.findNavController(view).navigate(R.id.action_global_mainFragment);
                         } else {
-                            Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                            ErrorDialog errorDialog = new ErrorDialog(requireContext());
+                            errorDialog.show();
+                            errorDialog.showDialog();
                         }
                     });
                 }
             } else {
-                Toast.makeText(requireContext(), "Skontrolujte zostatok", Toast.LENGTH_SHORT).show();
+                LackOfMoneyDialog lackOfMoneyDialog = new LackOfMoneyDialog(requireContext());
+                lackOfMoneyDialog.show();
+                lackOfMoneyDialog.showDialog();
             }
         });
     }

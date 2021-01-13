@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -49,42 +50,38 @@ public class MainFragment extends Fragment {
         SingletonUser user = SingletonUser.getInstance();
 
         FloatingActionButton toAddMoneyScreenButton = view.findViewById(R.id.btnToAddMoneyScreen);
-        FloatingActionButton removeMoneyButton = view.findViewById(R.id.btnRemoveZostatok);
-        FloatingActionButton settingGoalButton = view.findViewById(R.id.btnSettingPlan);
+        FloatingActionButton removeMoneyButton = view.findViewById(R.id.btnToAddExpenses);
+        //FloatingActionButton settingGoalButton = view.findViewById(R.id.btnSettingPlan);
         TextView zostatokValue = view.findViewById(R.id.zostatokValue);
-        TextView dashoard = view.findViewById(R.id.dashboard);
         TextView stav1 = view.findViewById(R.id.stav1);
         TextView stav2 = view.findViewById(R.id.stav2);
-        TextView stav3 = view.findViewById(R.id.stav3);
-        TextView percent1 = view.findViewById(R.id.percent1);
-        TextView percent2 = view.findViewById(R.id.percent2);
-        TextView percent3 = view.findViewById(R.id.percent3);
+        //TextView stav3 = view.findViewById(R.id.stav3);
         ProgressBar progressBar1 = view.findViewById(R.id.progressBar1);
         ProgressBar progressBar2 = view.findViewById(R.id.progressBar2);
-        ProgressBar progressBar3 = view.findViewById(R.id.progressBar3);
+        //ProgressBar progressBar3 = view.findViewById(R.id.progressBar3);
 
-        LinearLayout goal1 = view.findViewById(R.id.goal1);
-        LinearLayout goal2 = view.findViewById(R.id.goal2);
-        LinearLayout goal3 = view.findViewById(R.id.goal3);
+        CardView goal1 = view.findViewById(R.id.goal1);
+        CardView goal2 = view.findViewById(R.id.goal2);
+        //LinearLayout goal3 = view.findViewById(R.id.goal3);
 
-        dashoard.append(" - " + user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
+        //dashoard.append(" - " + user.getLoggedUser().getName() + " " + user.getLoggedUser().getSurname());
 
         double zostatok = user.getLoggedUser().getZostatok();
 
-        zostatokValue.setText(format(zostatok) + "€");
+        zostatokValue.setText(format(zostatok) + " €");
 
-        stav1.setText(user.getLoggedUser().getRezervaCast() + "/" + user.getLoggedUser().getRezerva() + "€");
+        stav1.setText(user.getLoggedUser().getRezervaCast() + " / " + user.getLoggedUser().getRezerva() + " €");
         double percentoDouble1 = user.getLoggedUser().getRezervaCast() / user.getLoggedUser().getRezerva() * 100;
         int percentoInt1 = (int) percentoDouble1;
-        percent1.setText(percentoInt1 + "%");
+//        percent1.setText(percentoInt1 + "%");
         progressBar1.post(() -> {
             progressBar1.setProgress(percentoInt1);
         });
 
-        stav2.setText(user.getLoggedUser().getMajetokCast() + "/" + user.getLoggedUser().getMajetok() + "€");
+        stav2.setText(user.getLoggedUser().getMajetokCast() + " / " + user.getLoggedUser().getMajetok() + " €");
         double percentoDouble2 = user.getLoggedUser().getMajetokCast() / user.getLoggedUser().getMajetok() * 100;
         int percentoInt2 = (int) percentoDouble2;
-        percent2.setText(percentoInt2+"%");
+//        percent2.setText(percentoInt2+"%");
         progressBar2.post(() -> {
             progressBar2.setProgress(percentoInt2);
         });
@@ -115,9 +112,9 @@ public class MainFragment extends Fragment {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_removeMoneyFragment);
         });
 
-        settingGoalButton.setOnClickListener(view1 -> {
-            Navigation.findNavController(view).navigate(R.id.action_global_sumarizationFragment);
-        });
+//        settingGoalButton.setOnClickListener(view1 -> {
+//            Navigation.findNavController(view).navigate(R.id.action_global_sumarizationFragment);
+//        });
     }
 
     public String format(double hodnota) {

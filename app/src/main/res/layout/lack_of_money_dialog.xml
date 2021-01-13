@@ -14,11 +14,11 @@
         android:padding="25dp">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:text="Niečo sa nepodarilo"
-            android:textColor="@color/Black"
+            android:text="Máte nedostatok financií na túto operáciu"
             android:textAlignment="center"
+            android:textColor="@color/Black"
             android:textSize="18sp" />
 
         <com.airbnb.lottie.LottieAnimationView
@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/error_cone" />
+            app:lottie_rawRes="@raw/payment_failed_error" />
 
 
         <Button
@@ -43,7 +43,7 @@
             android:paddingTop="5dp"
             android:paddingRight="12dp"
             android:paddingBottom="5dp"
-            android:text="Skúsiť znova"
+            android:text="OK"
             android:textColor="@color/White"
             android:textSize="18sp" />
 

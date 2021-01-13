@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,11 +21,9 @@ import com.google.firebase.firestore.SetOptions;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AddMoneyFragment extends Fragment {
+
+    double suma = 0;
 
     public AddMoneyFragment() {
         // Required empty public constructor
@@ -49,22 +48,24 @@ public class AddMoneyFragment extends Fragment {
         EditText sumaEditText = view.findViewById(R.id.sumaEditText);
 
         addMoneyButton.setOnClickListener(view1 -> {
-            double suma = Double.parseDouble(String.valueOf(sumaEditText.getText()));
-
+            try {
+                suma = Double.parseDouble(String.valueOf(sumaEditText.getText()));
+            } catch (Exception e) {
+                return;
+            }
             double percenta = suma / 100 * user.getLoggedUser().getMajetokInc();
             double novyMajetok = user.getLoggedUser().getMajetok() + percenta;
+
             user.getLoggedUser().setMajetok(novyMajetok);
             user.getLoggedUser().setZostatok(user.getLoggedUser().getZostatok() + suma);
-
 
             HashMap<String, Object> data = new HashMap<>();
             data.put("zostatok", user.getLoggedUser().getZostatok() + suma);
             data.put("majetok", novyMajetok);
 
+            firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> { });
 
-            firebaseFirestore.collection("users").document(auth.getCurrentUser().getUid()).set(data, SetOptions.merge()).addOnCompleteListener(runnable1 -> {
-                Toast.makeText(getContext(), "Dáta boli uložené", Toast.LENGTH_SHORT).show();
-            });
+            Navigation.findNavController(view).navigate(R.id.action_global_mainFragment);
         });
     }
 }
